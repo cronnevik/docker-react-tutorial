@@ -1,0 +1,16 @@
+# Base image with nodejs installed
+FROM node:alpine
+
+# Internal folder inside container, where files will be copied to
+WORKDIR /app
+
+# Copy package.json file separated
+COPY package.json .
+# Run command to install dependencies from package.json file
+RUN npm install
+
+# copy all files
+COPY . .
+
+# Default command
+CMD ["npm", "run", "start"]
